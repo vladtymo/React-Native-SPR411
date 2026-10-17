@@ -1,6 +1,5 @@
-import { Alert, FlatList, Text, View } from "react-native";
 import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
 import { Product } from "../models/Product";
 import ProductItem from "./ProductItem";
 
