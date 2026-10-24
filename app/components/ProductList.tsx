@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
+import { Alert, Button, FlatList, StyleSheet, Text, View } from "react-native";
 import { Product } from "../models/Product";
+import ProductForm from "./ProductForm";
 import ProductItem from "./ProductItem";
 
 const api = "https://fakestoreapi.com/products";
@@ -15,8 +16,25 @@ export default function ProductList() {
       .catch((error) => Alert.alert("Error", error.message));
   }, []);
 
+  const handleCreateProduct = (item: Product) => {
+    let newId = products.length + 1;
+    let newItem: Product = {
+      ...item,
+      price: Number(item.price),
+      rating: {
+        rate: null,
+        count: 0,
+      },
+      id: newId,
+    };
+
+    setProducts((prevProducts) => [...prevProducts, newItem]);
+  };
+
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Create New Product</Text>
+      <ProductForm onCreateProduct={handleCreateProduct} />
       <Text style={styles.title}>Product List</Text>
       <FlatList
         data={products}
@@ -25,6 +43,7 @@ export default function ProductList() {
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.list}
       />
+      <Button title="Clear All" onPress={() => setProducts([])}></Button>
     </View>
   );
 }
