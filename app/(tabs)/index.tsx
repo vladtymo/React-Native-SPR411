@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-import ProductList from "./components/ProductList";
+import ProductList from "../components/ProductList";
 
 export default function Index() {
   const [count, setCount] = useState(10);
@@ -52,7 +52,7 @@ export default function Index() {
       <Button title={"3-Button Alert"} onPress={createThreeButtonAlert} />
       <Button title={"Plus"} onPress={plus} /> */}
       <ProductList />
-      <Link href="./screens/details" style={styles.link}>
+      <Link href="./details" style={styles.link}>
         Open Details
       </Link>
     </View>
