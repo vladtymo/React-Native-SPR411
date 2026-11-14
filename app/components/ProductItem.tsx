@@ -1,5 +1,4 @@
-import { View, Text, Image } from "react-native";
-import { StyleSheet } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { Product } from "../models/Product";
 
 type ProductItemProps = {
@@ -16,11 +15,13 @@ export default function ProductItem({ product }: ProductItemProps) {
         resizeMode="contain"
       />
       <View style={styles.content}>
-        <Text style={styles.title} numberOfLines={2}>{product.title}</Text>
+        <Text style={styles.title} numberOfLines={2}>
+          {product.title} ({product.id})
+        </Text>
         <Text style={styles.price}>${product.price.toFixed(2)}</Text>
         <Text style={styles.meta}>{product.category}</Text>
         <Text style={styles.meta}>
-            ⭐ {product.rating?.rate} ({product.rating?.count})
+          ⭐ {product.rating?.rate} ({product.rating?.count})
         </Text>
       </View>
     </View>
