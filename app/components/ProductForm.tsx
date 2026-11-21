@@ -96,7 +96,10 @@ const ProductForm = ({ onCreateProduct }: Props) => {
       />
 
       <View style={styles.button}>
-        <Button title="Create Product" onPress={handleSubmit(onSubmit)} />
+        <Button
+          title="Create Product"
+          onPress={() => handleSubmit(onSubmit)()}
+        />
       </View>
     </View>
   );

@@ -21,7 +21,9 @@ export default function TabLayout() {
         options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="home" color={color as string} />
+          ),
         }}
       />
       <Tabs.Screen
@@ -33,9 +35,18 @@ export default function TabLayout() {
               name={
                 focused ? "information-circle" : "information-circle-outline"
               }
-              color={color}
+              color={color as string}
               size={24}
             />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="animations"
+        options={{
+          title: "Animations",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="film" color={color as string} />
           ),
         }}
       />
@@ -46,7 +57,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "newspaper" : "newspaper-outline"}
-              color={color}
+              color={color as string}
               size={24}
             />
           ),
